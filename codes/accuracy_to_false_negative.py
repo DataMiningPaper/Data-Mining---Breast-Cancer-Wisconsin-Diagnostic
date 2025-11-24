@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 
-# ----------------------------------------------------
-# 1) Hilfsfunktion: Textblock mit Prozentwerten parsen
-# ----------------------------------------------------
+#helpfunctions for percentage data preparations
 def parse_percent_block(text):
     values = []
     for token in text.replace('%', ' ').split():
@@ -10,16 +8,14 @@ def parse_percent_block(text):
         if not token:
             continue
         v = float(token)
-        # Sicherheitsnetz: falls mal 9666,0800% o.ä. drin steht
+       
         if v > 1000:
             v = v / 100.0
         values.append(v)
     return values
 
 
-# ----------------------------------------------------
-# 2) ROHDATEN: Genau wie aus Excel kopiert
-# ----------------------------------------------------
+#data which was created in weka for the single algorithms
 
 # Random Forest – Accuracy
 rf_acc_text = """
@@ -420,9 +416,7 @@ naivebyas_prec_text = """
 """
 
 
-# ----------------------------------------------------
-# 3) In Python-Listen umwandeln (ALLE in %)
-# ----------------------------------------------------
+#create the python lists
 rf_accuracy   = parse_percent_block(rf_acc_text)
 rf_precision  = parse_percent_block(rf_prec_text)
 
@@ -442,9 +436,7 @@ naivebyas_accuracy = parse_percent_block(naivebyas_acc_text)
 naivebyas_precision = parse_percent_block(naivebyas_prec_text)
 
 
-# ----------------------------------------------------
-# 4) Methoden-Definition für Index-Plots
-# ----------------------------------------------------
+#methods for the index-plots
 methods = {
     "Random Forest": {
         "acc": rf_accuracy,
@@ -486,9 +478,7 @@ methods = {
 
 
 
-# ----------------------------------------------------
-# 6) False Negatives pro Algorithmus
-# ----------------------------------------------------
+#false-negative data for each algorithmen
 
 rf_false_negatives = [
     15, 10, 8, 7, 8, 6, 6, 5, 4, 4, 5, 5, 5, 5, 4, 4, 4, 4,
@@ -506,7 +496,7 @@ naive_false_negatives_raw = [
     14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
     14, 14, 13, 13, 13, 13
 ]
-# Naive-Bayes-Accuracy hat 35 Werte -> wir kürzen auf 35:
+
 naive_false_negatives = naive_false_negatives_raw[:35]
 
 bayesnet_false_negatives = [
@@ -524,7 +514,7 @@ function_false_negatives = [
     1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0
 ]
 
-# Sicherheitscheck (optional)
+#check for security
 print("RF  :", len(rf_false_negatives),       len(rf_accuracy))
 print("J48 :", len(j48_false_negatives),      len(j48_accuracy))
 print("NB  :", len(naive_false_negatives),    len(naivebyas_accuracy))
@@ -533,9 +523,8 @@ print("OneR:", len(oner_false_negatives),     len(oner_accuracy))
 print("Func:", len(function_false_negatives), len(function_accuracy))
 
 
-# ----------------------------------------------------
-# 7) Plot: Accuracy vs False Negatives (alle Algorithmen)
-# ----------------------------------------------------
+#plot the graph: accuracy vs false-negatives for all algorithms
+
 algorithms_fn = {
     "Random Forest": {
         "fn": rf_false_negatives,
@@ -573,7 +562,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
     acc = data["acc"]
 
     if len(fn) != len(acc):
-        print(f"Achtung: Längen passen nicht bei {name} (FN={len(fn)}, ACC={len(acc)})")
+        print(f"Attention: Lengths are wrong for {name} (FN={len(fn)}, ACC={len(acc)})")
         continue
 
     plt.plot(
@@ -586,7 +575,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
 
 plt.xlabel("False Negatives")
 plt.ylabel("Accuracy in %")
-plt.title("Accuracy vs. False Negatives für alle Algorithmen")
+plt.title("Accuracy vs. False Negatives for all algorithms")
 plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
