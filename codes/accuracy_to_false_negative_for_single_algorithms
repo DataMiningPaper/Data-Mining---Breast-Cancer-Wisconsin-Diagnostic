@@ -560,13 +560,13 @@ linestyles = ['-', '--', '-.', ':', '-', '--']
 fn  = rf_false_negatives
 acc = rf_accuracy
 
-#only one algorithm is shown
+#!!!!!!!!only one algorithm is shown!!!!!!!!
 plt.plot(
     fn,
     acc,
     marker='o',
     linestyle='-',
-    label="Random Forest"
+    label="Random Forest" #change this line to the needed algorithm!!!!
 )
 
 
