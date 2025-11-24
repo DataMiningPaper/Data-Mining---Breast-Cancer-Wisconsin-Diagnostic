@@ -202,7 +202,7 @@ function_prec_text = """
 52,09%
 """
 
-#
+#create the python lists
 rf_prec = parse_percent_block(rf_prec_text)
 j48_prec = parse_percent_block(j48_prec_text)
 naive_prec = parse_percent_block(naive_prec_text)
@@ -210,10 +210,7 @@ bayesnet_prec = parse_percent_block(bayesnet_prec_text)
 oner_prec = parse_percent_block(oner_prec_text)
 function_prec = parse_percent_block(function_prec_text)
 
-# ----------------------------------------------------
-# FALSE NEGATIVES (genau dieselben wie vorher!)
-# ----------------------------------------------------
-# Diese Listen sind identisch wie bei Accuracy & Recoil
+#data for the false-negative results
 
 rf_fn = [
     15,10,8,7,8,6,6,5,4,4,5,5,5,5,4,4,4,4,
@@ -256,9 +253,9 @@ algorithms_precision = {
     "Functions Logistic":{"fn": function_fn,  "prec": function_prec},
 }
 
-# ----------------------------------------------------
-# Plot: Precision vs False Negatives für alle Algorithmen
-# ----------------------------------------------------
+
+#create the graph: Precision vs False Negatives for all algorithms
+
 plt.figure(figsize=(9, 5))
 
 markers = ['o', '^', 's', 'D', 'x', '+']
@@ -278,7 +275,7 @@ for i, (name, data) in enumerate(algorithms_precision.items()):
 
 plt.xlabel("False Negatives")
 plt.ylabel("Precision (%)")
-plt.title("Precision vs False Negatives – alle Algorithmen")
+plt.title("Precision vs False Negatives – all Algorithms")
 plt.grid(True)
 plt.legend()
 plt.ylim(0, 100)
