@@ -303,14 +303,20 @@ plt.figure(figsize=(8, 5))
 markers    = ['o', '^', 's', 'D', 'x', '+']
 linestyles = ['-', '--', '-.', ':', '-', '--']
 
+name = "Random Forest"
+data = algorithms_recoil[name]
 
-#only one algorithm is shown
+fn  = data["fn"]
+rec = data["rec"]
+
+n = min(len(fn), len(rec))
+
 plt.plot(
-    fn,
-    acc,
+    fn[:n],
+    rec[:n],
     marker='o',
     linestyle='-',
-    label="Random Forest"
+    label=name
 )
 
 plt.xlabel("False Negatives")
