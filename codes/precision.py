@@ -8,6 +8,8 @@ def parse_percent_block(text):
             values.append(float(token))
     return values
 
+#inserting the data from the excel file
+
 rf_prec_text = """
 95,73%
 93,15%
@@ -200,9 +202,7 @@ function_prec_text = """
 52,09%
 """
 
-# ----------------------------------------------------
-# Precision-Werte parsen
-# ----------------------------------------------------
+#
 rf_prec = parse_percent_block(rf_prec_text)
 j48_prec = parse_percent_block(j48_prec_text)
 naive_prec = parse_percent_block(naive_prec_text)
