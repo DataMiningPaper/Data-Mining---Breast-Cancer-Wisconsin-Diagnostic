@@ -485,40 +485,6 @@ methods = {
 }
 
 
-# ----------------------------------------------------
-# 5) Plot 1: links Accuracy, rechts Precision (vs Index)
-# ----------------------------------------------------
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), sharex=False)
-
-# Accuracy-Plot
-for name, vals in methods.items():
-    x = range(1, len(vals["acc"]) + 1)
-    ax1.plot(x, vals["acc"],
-             label=name,
-             marker=vals["marker"],
-             linestyle=vals["linestyle"])
-ax1.set_xlabel("Index")
-ax1.set_ylabel("Accuracy in %")
-ax1.set_ylim(0, 100)
-ax1.legend()
-ax1.grid(True)
-
-# Precision-Plot
-for name, vals in methods.items():
-    x = range(1, len(vals["prec"]) + 1)
-    ax2.plot(x, vals["prec"],
-             label=name,
-             marker=vals["marker"],
-             linestyle=vals["linestyle"])
-ax2.set_xlabel("Index")
-ax2.set_ylabel("Precision in %")
-ax2.set_ylim(0, 100)
-ax2.legend()
-ax2.grid(True)
-
-plt.tight_layout()
-plt.show()
-
 
 # ----------------------------------------------------
 # 6) False Negatives pro Algorithmus
