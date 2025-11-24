@@ -1,8 +1,5 @@
 import matplotlib.pyplot as plt
 
-# ----------------------------------------------------
-# Hilfsfunktion: Textblock mit Prozentwerten parsen
-# ----------------------------------------------------
 def parse_percent_block(text):
     values = []
     for token in text.replace('%', ' ').split():
@@ -14,11 +11,8 @@ def parse_percent_block(text):
     return values
 
 
-# ----------------------------------------------------
-# 1) RECOIL-WERTE (in %) – genau wie von dir geschickt
-# ----------------------------------------------------
+# inserted percentage data for recall
 
-# Random Forest – Recoil
 rf_recoil_text = """
 95,28%
 96,23%
@@ -219,9 +213,7 @@ function_recoil_text = """
 """
 
 
-# ----------------------------------------------------
-# 2) In Listen umwandeln
-# ----------------------------------------------------
+# changed to lists
 rf_recoil        = parse_percent_block(rf_recoil_text)
 j48_recoil       = parse_percent_block(j48_recoil_text)
 naive_recoil     = parse_percent_block(naive_recoil_text)
@@ -229,10 +221,7 @@ bayesnet_recoil  = parse_percent_block(bayesnet_recoil_text)
 oner_recoil      = parse_percent_block(oner_recoil_text)
 function_recoil  = parse_percent_block(function_recoil_text)
 
-
-# ----------------------------------------------------
-# 3) False Negatives je Algorithmus (von dir)
-# ----------------------------------------------------
+# insert false negative data
 rf_fn = [
     15,10,8,7,8,6,6,5,4,4,5,5,5,5,4,4,4,4,
     3,5,5,4,4,3,4,3,4,4,4,4,2,2,3,2,2,1,0
@@ -265,9 +254,8 @@ function_fn = [
     1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0
 ]
 
-# ----------------------------------------------------
-# 4) Alles in ein Dictionary packen
-# ----------------------------------------------------
+# inserted into directory
+
 algorithms_recoil = {
     "Random Forest": {
         "fn": rf_fn,
@@ -294,10 +282,8 @@ algorithms_recoil = {
         "rec": function_recoil,
     },
 }
+# plotted recall vs false negatives
 
-# ----------------------------------------------------
-# 5) Plot: Recoil vs False Negatives (ALLE Algorithmen)
-# ----------------------------------------------------
 plt.figure(figsize=(8, 5))
 
 markers    = ['o', '^', 's', 'D', 'x', '+']
@@ -307,7 +293,7 @@ for i, (name, data) in enumerate(algorithms_recoil.items()):
     fn   = data["fn"]
     rec  = data["rec"]
 
-    # Falls Längen minimal unterschiedlich sind → auf gemeinsame Länge kürzen
+    # changed length to a similar one
     n = min(len(fn), len(rec))
     x = fn[:n]
     y = rec[:n]
@@ -322,7 +308,7 @@ for i, (name, data) in enumerate(algorithms_recoil.items()):
 plt.xlabel("False Negatives")
 plt.ylabel("Recoil (%)")
 plt.title("Recoil vs. False Negatives für alle Algorithmen")
-plt.ylim(0, 100)   # bei Bedarf z.B. auf (80, 100) ändern
+plt.ylim(0, 100)   # if necessary changed to 80/100
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
