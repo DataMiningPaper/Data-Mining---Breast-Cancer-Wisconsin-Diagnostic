@@ -284,11 +284,14 @@ algorithms_recall = {
 }
 # plotted recall vs false negatives
 
+#create the new figure
 plt.figure(figsize=(8, 5))
 
+#colors and forms for each algorithm
 markers = ['o', '^', 's', 'D', 'x', '+']
 colors  = ['blue', 'red', 'green', 'purple', 'orange', 'brown']
 
+#plot the scatter plot for each algorithm
 for i, (name, data) in enumerate(algorithms_recall.items()):
     fn  = data["fn"]
     rec = data["rec"]
@@ -297,7 +300,7 @@ for i, (name, data) in enumerate(algorithms_recall.items()):
     x = fn[:n]
     y = rec[:n]
 
-    # Random Forest wieder als hollow circles
+    #circles for the random forest
     if name == "Random Forest":
         plt.scatter(
             x, y,
@@ -318,6 +321,7 @@ for i, (name, data) in enumerate(algorithms_recall.items()):
             label=name
         )
 
+#descriptions of the graph
 plt.xlabel("False Negatives")
 plt.ylabel("Recall (%)")
 plt.title("Recall vs. False Negatives – Scatter Plot für alle Algorithmen")
