@@ -555,7 +555,7 @@ algorithms_fn = {
 plt.figure(figsize=(8, 5))
 
 markers = ['o', '^', 's', 'D', 'x', '+']
-linestyles = ['-', '--', '-.', ':', '-', '--']
+colors = ['blue', 'red', 'green', 'purple', 'orange', 'brown']
 
 for i, (name, data) in enumerate(algorithms_fn.items()):
     fn  = data["fn"]
@@ -565,17 +565,39 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
         print(f"Attention: Lengths are wrong for {name} (FN={len(fn)}, ACC={len(acc)})")
         continue
 
-    plt.plot(
-        fn,
-        acc,
-        marker=markers[i % len(markers)],
-        linestyle=linestyles[i % len(linestyles)],
-        label=name
-    )
+for i, (name, data) in enumerate(algorithms_fn.items()):
+    fn = data["fn"]
+    acc = data["acc"]
+
+    if len(fn) != len(acc):
+        print(f"Attention: Lengths wrong for {name} (FN={len(fn)}, ACC={len(acc)})")
+        continue
+
+    if name == "Random Forest":
+        # ➤ ungefüllte Kreise
+        plt.scatter(
+            fn, acc,
+            label=name,
+            marker='o',
+            facecolors='none',
+            edgecolors='blue',
+            s=80,
+            linewidths=1.5
+        )
+    else:
+        # ➤ normale gefüllte Marker
+        plt.scatter(
+            fn, acc,
+            label=name,
+            marker=markers[i % len(markers)],
+            color=colors[i % len(colors)],
+            s=60,
+            alpha=0.8
+        )
 
 plt.xlabel("False Negatives")
 plt.ylabel("Accuracy in %")
-plt.title("Accuracy vs. False Negatives for all algorithms")
+plt.title("Accuracy vs. False Negatives (Scatter Plot)")
 plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
