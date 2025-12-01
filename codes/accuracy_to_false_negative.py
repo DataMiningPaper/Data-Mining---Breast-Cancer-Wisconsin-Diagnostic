@@ -525,6 +525,7 @@ print("Func:", len(function_false_negatives), len(function_accuracy))
 
 #plot the graph: accuracy vs false-negatives for all algorithms
 
+#dictionary with all values
 algorithms_fn = {
     "Random Forest": {
         "fn": rf_false_negatives,
@@ -552,11 +553,14 @@ algorithms_fn = {
     },
 }
 
+#create the new figure
 plt.figure(figsize=(8, 5))
 
+#colours and forms for each algorithm
 markers = ['o', '^', 's', 'D', 'x', '+']
 colors = ['blue', 'red', 'green', 'purple', 'orange', 'brown']
 
+#checking if all the lengths are the same
 for i, (name, data) in enumerate(algorithms_fn.items()):
     fn  = data["fn"]
     acc = data["acc"]
@@ -565,6 +569,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
         print(f"Attention: Lengths are wrong for {name} (FN={len(fn)}, ACC={len(acc)})")
         continue
 
+#plot the scatter plots for each algorithm
 for i, (name, data) in enumerate(algorithms_fn.items()):
     fn = data["fn"]
     acc = data["acc"]
