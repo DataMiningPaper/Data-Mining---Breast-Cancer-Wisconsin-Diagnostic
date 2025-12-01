@@ -574,7 +574,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
         continue
 
     if name == "Random Forest":
-        # ➤ ungefüllte Kreise
+        #ungefüllte Kreise
         plt.scatter(
             fn, acc,
             label=name,
@@ -585,7 +585,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
             linewidths=1.5
         )
     else:
-        # ➤ normale gefüllte Marker
+        #normale gefüllte Marker
         plt.scatter(
             fn, acc,
             label=name,
