@@ -259,23 +259,37 @@ algorithms_precision = {
 plt.figure(figsize=(9, 5))
 
 markers = ['o', '^', 's', 'D', 'x', '+']
-linestyles = ['-', '--', '-.', ':', '-', '--']
+colors = ['blue', 'red', 'green', 'purple', 'orange', 'brown']
 
 for i, (name, data) in enumerate(algorithms_precision.items()):
     fn  = data["fn"]
     pr  = data["prec"]
     n = min(len(fn), len(pr))
 
-    plt.plot(
-        fn[:n], pr[:n],
-        marker=markers[i % len(markers)],
-        linestyle=linestyles[i % len(linestyles)],
-        label=name
-    )
+    if name == "Random Forest":
+        # ungefüllte Kreise (Hollow marker)
+        plt.scatter(
+            fn[:n], pr[:n],
+            marker='o',
+            facecolors='none',
+            edgecolors='blue',
+            s=70,
+            linewidths=1.4,
+            label=name
+        )
+    else:
+        plt.scatter(
+            fn[:n], pr[:n],
+            marker=markers[i % len(markers)],
+            color=colors[i % len(colors)],
+            s=60,
+            alpha=0.85,
+            label=name
+        )
 
 plt.xlabel("False Negatives")
 plt.ylabel("Precision (%)")
-plt.title("Precision vs False Negatives – all Algorithms")
+plt.title("Precision vs False Negatives – Scatter Plot")
 plt.grid(True)
 plt.legend()
 plt.ylim(0, 100)
