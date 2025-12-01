@@ -256,11 +256,14 @@ algorithms_precision = {
 
 #create the graph: Precision vs False Negatives for all algorithms
 
+#create the figure
 plt.figure(figsize=(9, 5))
 
+#colors and forms for each algorithm
 markers = ['o', '^', 's', 'D', 'x', '+']
 colors = ['blue', 'red', 'green', 'purple', 'orange', 'brown']
 
+#plot the scatter plots for each algorithm
 for i, (name, data) in enumerate(algorithms_precision.items()):
     fn  = data["fn"]
     pr  = data["prec"]
@@ -287,6 +290,7 @@ for i, (name, data) in enumerate(algorithms_precision.items()):
             label=name
         )
 
+#descritpion of the graph
 plt.xlabel("False Negatives")
 plt.ylabel("Precision (%)")
 plt.title("Precision vs False Negatives – Scatter Plot")
