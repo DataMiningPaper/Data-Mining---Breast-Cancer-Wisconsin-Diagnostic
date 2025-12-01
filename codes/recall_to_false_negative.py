@@ -286,29 +286,42 @@ algorithms_recall = {
 
 plt.figure(figsize=(8, 5))
 
-markers    = ['o', '^', 's', 'D', 'x', '+']
-linestyles = ['-', '--', '-.', ':', '-', '--']
+markers = ['o', '^', 's', 'D', 'x', '+']
+colors  = ['blue', 'red', 'green', 'purple', 'orange', 'brown']
 
 for i, (name, data) in enumerate(algorithms_recall.items()):
-    fn   = data["fn"]
-    rec  = data["rec"]
+    fn  = data["fn"]
+    rec = data["rec"]
 
-    # changed length to a similar one
     n = min(len(fn), len(rec))
     x = fn[:n]
     y = rec[:n]
 
-    plt.plot(
-        x, y,
-        marker=markers[i % len(markers)],
-        linestyle=linestyles[i % len(linestyles)],
-        label=name
-    )
+    # Random Forest wieder als hollow circles
+    if name == "Random Forest":
+        plt.scatter(
+            x, y,
+            marker='o',
+            facecolors='none',
+            edgecolors='blue',
+            s=70,
+            linewidths=1.4,
+            label=name
+        )
+    else:
+        plt.scatter(
+            x, y,
+            marker=markers[i % len(markers)],
+            color=colors[i % len(colors)],
+            s=60,
+            alpha=0.85,
+            label=name
+        )
 
 plt.xlabel("False Negatives")
-plt.ylabel("recall (%)")
-plt.title("recall vs. False Negatives für alle Algorithmen")
-plt.ylim(80, 100)   # if necessary changed to 80/100
+plt.ylabel("Recall (%)")
+plt.title("Recall vs. False Negatives – Scatter Plot für alle Algorithmen")
+plt.ylim(80, 100)
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
