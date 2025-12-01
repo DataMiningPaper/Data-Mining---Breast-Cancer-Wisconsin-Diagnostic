@@ -579,7 +579,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
         continue
 
     if name == "Random Forest":
-        #ungefüllte Kreise
+        
         plt.scatter(
             fn, acc,
             label=name,
@@ -590,7 +590,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
             linewidths=1.5
         )
     else:
-        #normale gefüllte Marker
+        
         plt.scatter(
             fn, acc,
             label=name,
@@ -600,6 +600,7 @@ for i, (name, data) in enumerate(algorithms_fn.items()):
             alpha=0.8
         )
 
+#descriptions of the graph
 plt.xlabel("False Negatives")
 plt.ylabel("Accuracy in %")
 plt.title("Accuracy vs. False Negatives (Scatter Plot)")
