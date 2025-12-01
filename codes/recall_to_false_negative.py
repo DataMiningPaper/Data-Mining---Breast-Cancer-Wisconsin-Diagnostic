@@ -13,7 +13,7 @@ def parse_percent_block(text):
 
 # inserted percentage data for recall
 
-rf_recoil_text = """
+rf_recall_text = """
 95,28%
 96,23%
 96,70%
@@ -52,8 +52,8 @@ rf_recoil_text = """
 100,00%
 """
 
-# J48 – Recoil
-j48_recoil_text = """
+# J48 – recall
+j48_recall_text = """
 92,92%
 93,87%
 92,45%
@@ -87,8 +87,8 @@ j48_recoil_text = """
 100,00%
 """
 
-# Naive Bayes – Recoil
-naive_recoil_text = """
+# Naive Bayes – recall
+naive_recall_text = """
 89,62%
 90,09%
 90,09%
@@ -127,8 +127,8 @@ naive_recoil_text = """
 93,87%
 """
 
-# Bayes Net – Recoil
-bayesnet_recoil_text = """
+# Bayes Net – recall
+bayesnet_recall_text = """
 93,40%
 94,34%
 93,87%
@@ -153,8 +153,8 @@ bayesnet_recoil_text = """
 100,00%
 """
 
-# OneR – Recoil
-oner_recoil_text = """
+# OneR – recall
+oner_recall_text = """
 86,79%
 87,74%
 90,09%
@@ -180,8 +180,8 @@ oner_recoil_text = """
 100,00%
 """
 
-# Functions Logistic – Recoil
-function_recoil_text = """
+# Functions Logistic – recall
+function_recall_text = """
 94,81%
 97,17%
 97,17%
@@ -214,12 +214,12 @@ function_recoil_text = """
 
 
 # changed to lists
-rf_recoil        = parse_percent_block(rf_recoil_text)
-j48_recoil       = parse_percent_block(j48_recoil_text)
-naive_recoil     = parse_percent_block(naive_recoil_text)
-bayesnet_recoil  = parse_percent_block(bayesnet_recoil_text)
-oner_recoil      = parse_percent_block(oner_recoil_text)
-function_recoil  = parse_percent_block(function_recoil_text)
+rf_recall        = parse_percent_block(rf_recall_text)
+j48_recall       = parse_percent_block(j48_recall_text)
+naive_recall     = parse_percent_block(naive_recall_text)
+bayesnet_recall  = parse_percent_block(bayesnet_recall_text)
+oner_recall      = parse_percent_block(oner_recall_text)
+function_recall  = parse_percent_block(function_recall_text)
 
 # insert false negative data
 rf_fn = [
@@ -256,30 +256,30 @@ function_fn = [
 
 # inserted into directory
 
-algorithms_recoil = {
+algorithms_recall = {
     "Random Forest": {
         "fn": rf_fn,
-        "rec": rf_recoil,
+        "rec": rf_recall,
     },
     "J48": {
         "fn": j48_fn,
-        "rec": j48_recoil,
+        "rec": j48_recall,
     },
     "Naive Bayes": {
         "fn": naive_fn,
-        "rec": naive_recoil,
+        "rec": naive_recall,
     },
     "Bayes Net": {
         "fn": bayesnet_fn,
-        "rec": bayesnet_recoil,
+        "rec": bayesnet_recall,
     },
     "OneR": {
         "fn": oner_fn,
-        "rec": oner_recoil,
+        "rec": oner_recall,
     },
     "Functions Logistic": {
         "fn": function_fn,
-        "rec": function_recoil,
+        "rec": function_recall,
     },
 }
 # plotted recall vs false negatives
@@ -289,7 +289,7 @@ plt.figure(figsize=(8, 5))
 markers    = ['o', '^', 's', 'D', 'x', '+']
 linestyles = ['-', '--', '-.', ':', '-', '--']
 
-for i, (name, data) in enumerate(algorithms_recoil.items()):
+for i, (name, data) in enumerate(algorithms_recall.items()):
     fn   = data["fn"]
     rec  = data["rec"]
 
@@ -306,9 +306,9 @@ for i, (name, data) in enumerate(algorithms_recoil.items()):
     )
 
 plt.xlabel("False Negatives")
-plt.ylabel("Recoil (%)")
-plt.title("Recoil vs. False Negatives für alle Algorithmen")
-plt.ylim(0, 100)   # if necessary changed to 80/100
+plt.ylabel("recall (%)")
+plt.title("recall vs. False Negatives für alle Algorithmen")
+plt.ylim(80, 100)   # if necessary changed to 80/100
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
