@@ -557,11 +557,11 @@ plt.figure(figsize=(8, 5))
 markers = ['o', '^', 's', 'D', 'x', '+']
 linestyles = ['-', '--', '-.', ':', '-', '--']
 
-fn  = rf_false_negatives
-acc = rf_accuracy
-
 #!!!!!!!!only one algorithm is shown!!!!!!!!
-plt.plot(
+fn  = rf_false_negatives #change this line to the needed algorithm!!!! -> find the abbreviation for the needed algorithm above from line 528-553
+acc = rf_accuracy #change this line to the needed algorithm!!!!
+
+plt.scatter(
     fn,
     acc,
     marker='o',
