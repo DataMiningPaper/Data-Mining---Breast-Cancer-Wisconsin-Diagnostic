@@ -297,11 +297,10 @@ rec = data["rec"]
 
 n = min(len(fn), len(rec))
 
-plt.plot(
+plt.scatter(
     fn[:n],
     rec[:n],
     marker='o',
-    linestyle='-',
     label=name
 )
 
