@@ -264,14 +264,14 @@ linestyles = ['-', '--', '-.', ':', '-', '--']
 
 
 #!!!!!choose the needed algorithm here!!!!
-name = "Random Forest"
+name = "Random Forest" #change this to the selected algorithm
 data = algorithms_precision[name]
 
-fn = data["fn"]
+fn = data["fn"] 
 pr = data["prec"]
 n = min(len(fn), len(pr))
 
-plt.plot(
+plt.scatter(
     fn[:n],
     pr[:n],
     marker='o',
@@ -282,7 +282,7 @@ plt.plot(
 
 plt.xlabel("False Negatives")
 plt.ylabel("Precision (%)")
-plt.title("Precision vs False Negatives – all Algorithms")
+plt.title("Precision vs False Negatives for single algorithms")
 plt.grid(True)
 plt.legend()
 plt.ylim(0, 100)
