@@ -181,7 +181,7 @@ oner_recoil_text = """
 100,00%
 """
 
-# Functions Logistic – Recoil
+# Logistic Regression – Recall
 function_recoil_text = """
 94,81%
 97,17%
@@ -278,7 +278,7 @@ algorithms_recoil = {
         "fn": oner_fn,
         "rec": oner_recoil,
     },
-    "Functions Logistic": {
+    "Logistic Regression": {
         "fn": function_fn,
         "rec": function_recoil,
     },
@@ -289,7 +289,7 @@ plt.figure(figsize=(8, 5))
 markers    = ['o', '^', 's', 'D', 'x', '+']
 linestyles = ['-', '--', '-.', ':', '-', '--']
 
-name = "Random Forest"
+name = "Random Forest" # change this line to the selected algorithm!!!
 data = algorithms_recoil[name]
 
 fn  = data["fn"]
@@ -305,8 +305,8 @@ plt.scatter(
 )
 
 plt.xlabel("False Negatives")
-plt.ylabel("Recoil (%)")
-plt.title("Recoil vs. False Negatives für alle Algorithmen")
+plt.ylabel("Recall (%)")
+plt.title("Recall vs. False Negatives for single algorithms")
 plt.ylim(0, 100)   # if necessary changed to 80/100
 plt.grid(True)
 plt.legend()
