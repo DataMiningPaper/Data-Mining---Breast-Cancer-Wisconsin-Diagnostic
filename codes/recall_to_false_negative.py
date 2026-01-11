@@ -180,7 +180,7 @@ oner_recall_text = """
 100,00%
 """
 
-# Functions Logistic – recall
+# Logistic Regression – recall
 function_recall_text = """
 94,81%
 97,17%
@@ -277,7 +277,7 @@ algorithms_recall = {
         "fn": oner_fn,
         "rec": oner_recall,
     },
-    "Functions Logistic": {
+    "Logistic Regression": {
         "fn": function_fn,
         "rec": function_recall,
     },
@@ -324,7 +324,7 @@ for i, (name, data) in enumerate(algorithms_recall.items()):
 #descriptions of the graph
 plt.xlabel("False Negatives")
 plt.ylabel("Recall (%)")
-plt.title("Recall vs. False Negatives – Scatter Plot für alle Algorithmen")
+plt.title("Recall vs. False Negatives – Scatter Plot for all algorithms")
 plt.ylim(80, 100)
 plt.grid(True)
 plt.legend()
