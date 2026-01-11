@@ -250,7 +250,7 @@ algorithms_precision = {
     "Naive Bayes":       {"fn": naive_fn,     "prec": naive_prec},
     "Bayes Net":         {"fn": bayesnet_fn,  "prec": bayesnet_prec},
     "OneR":              {"fn": oner_fn,      "prec": oner_prec},
-    "Functions Logistic":{"fn": function_fn,  "prec": function_prec},
+    "Logistic Regression":{"fn": function_fn,  "prec": function_prec},
 }
 
 
@@ -293,7 +293,7 @@ for i, (name, data) in enumerate(algorithms_precision.items()):
 #descritpion of the graph
 plt.xlabel("False Negatives")
 plt.ylabel("Precision (%)")
-plt.title("Precision vs False Negatives – Scatter Plot")
+plt.title("Precision vs False Negatives for all algorithms")
 plt.grid(True)
 plt.legend()
 plt.ylim(0, 100)
