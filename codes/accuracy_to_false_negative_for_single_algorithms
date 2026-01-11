@@ -273,7 +273,7 @@ oner_prec_text = """
 40,85%
 """
 
-# Functions Logistic – Accuracy
+# Logistic Regression – Accuracy
 function_acc_text = """
 97,1880%
 97,1880%
@@ -304,7 +304,7 @@ function_acc_text = """
 65,7293%
 """
 
-# Functions Logistic – Precision
+# Logistic Regression– Precision
 function_prec_text = """
 97,57%
 95,37%
@@ -462,7 +462,7 @@ methods = {
         "marker": "+",
         "linestyle": "-"
     },
-    "Functions Logistic": {
+    "Logistic Regression": {
         "acc": function_accuracy,
         "prec": function_precision,
         "marker": "o",
@@ -546,7 +546,7 @@ algorithms_fn = {
         "fn": oner_false_negatives,
         "acc": oner_accuracy,
     },
-    "Functions Logistic": {
+    "Logistic Regression": {
         "fn": function_false_negatives,
         "acc": function_accuracy,
     },
@@ -572,7 +572,7 @@ plt.scatter(
 
 plt.xlabel("False Negatives")
 plt.ylabel("Accuracy in %")
-plt.title("Accuracy vs. False Negatives for all algorithms")
+plt.title("Accuracy vs. False Negatives for single algorithms")
 plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
