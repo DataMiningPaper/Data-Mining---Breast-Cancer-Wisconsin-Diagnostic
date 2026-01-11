@@ -250,7 +250,7 @@ algorithms_precision = {
     "Naive Bayes":       {"fn": naive_fn,     "prec": naive_prec},
     "Bayes Net":         {"fn": bayesnet_fn,  "prec": bayesnet_prec},
     "OneR":              {"fn": oner_fn,      "prec": oner_prec},
-    "Functions Logistic":{"fn": function_fn,  "prec": function_prec},
+    "Logistic Regression":{"fn": function_fn,  "prec": function_prec},
 }
 
 
