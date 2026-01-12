@@ -20,7 +20,7 @@ def parse_percent_block(text):
 # Random Forest – Accuracy
 rf_acc_text = """
 95,7821%
-9666,0800%
+96,6608%
 95,9578%
 95,7821%
 95,0791%
